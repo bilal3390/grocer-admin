@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoriesResource\Pages;
-use App\Filament\Resources\CategoriesResource\RelationManagers;
-use App\Models\Categories;
+use App\Filament\Resources\BabyCareResource\Pages;
+use App\Filament\Resources\BabyCareResource\RelationManagers;
+use App\Models\BabyCare;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoriesResource extends Resource
+class BabyCareResource extends Resource
 {
-    protected static ?string $model = Categories::class;
+    protected static ?string $model = BabyCare::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -24,6 +24,8 @@ class CategoriesResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\TextInput::make('quantity')->required(),
+                Forms\Components\TextInput::make('price')->required(),
             ]);
     }
 
@@ -32,11 +34,11 @@ class CategoriesResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('created_at'),
+                Tables\Columns\TextColumn::make('quantity'),
+                Tables\Columns\TextColumn::make('price'),
             ])
             ->filters([
-                // Tables\Filters\Filter::make('verified')
-                // ->query(fn (Builder $query): Builder => $query->whereNotNull('created_at')),
+                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -56,9 +58,9 @@ class CategoriesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategories::route('/create'),
-            'edit' => Pages\EditCategories::route('/{record}/edit'),
+            'index' => Pages\ListBabyCares::route('/'),
+            'create' => Pages\CreateBabyCare::route('/create'),
+            'edit' => Pages\EditBabyCare::route('/{record}/edit'),
         ];
     }
 }
