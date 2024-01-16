@@ -9,5 +9,5 @@ class BabyCare extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','quantity','price'];
+    protected $fillable = ['name','quantity','price','image'];
 }

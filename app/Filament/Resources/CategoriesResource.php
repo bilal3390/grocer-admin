@@ -24,6 +24,7 @@ class CategoriesResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\FileUpload::make('image'),
             ]);
     }
 
@@ -33,6 +34,7 @@ class CategoriesResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('created_at'),
+                Tables\Columns\ImageColumn::make('image'),
             ])
             ->filters([
                 // Tables\Filters\Filter::make('verified')

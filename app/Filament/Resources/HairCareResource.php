@@ -26,6 +26,7 @@ class HairCareResource extends Resource
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\TextInput::make('quantity')->required(),
                 Forms\Components\TextInput::make('price')->required(),
+                Forms\Components\FileUpload::make('image'),
             ]);
     }
 
@@ -36,6 +37,7 @@ class HairCareResource extends Resource
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('quantity'),
                 Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\ImageColumn::make('image'),
             ])
             ->filters([
                 //
